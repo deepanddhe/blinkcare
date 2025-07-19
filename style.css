@@ -1,0 +1,42 @@
+body {
+    background-image: url('eyes.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color:#020a13; 
+    text-align: center;
+    font-size:35px;
+}
+
+p,li {
+    color:darkblue;
+    font-size: 30px;
+    line-height: 1.6;
+}
+
+.main-image, .small-image {
+    border-radius: px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 20px 0;
+}
+
+
+
+button:hover, input[type="submit"]:hover {
+    background-color:green;
+}
+
+.form-box{
+      font-size:20px;
+}
+
+iframe {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}

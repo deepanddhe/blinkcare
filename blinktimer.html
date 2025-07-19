@@ -1,0 +1,32 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blink Reminder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 style="text-align:center;">Blink Reminder System</h2>
+    <div style="text-align:center; margin-top:20px;">
+        <button onclick="startBlinkReminder()" style="font-size:16px; padding:10px 20px;">Start Blink Reminder</button>
+        <button onclick="stopBlinkReminder()" style="font-size:16px; padding:10px 20px; margin-left:10px;">Stop Reminder</button></div>
+    <p id="blinkMessage" style="text-align:center; font-size:50px; color:darkblue; margin-top:30px;"></p>
+    <script>
+        let blinkInterval;
+         function startBlinkReminder() {
+            document.getElementById("blinkMessage").innerText = "Blink reminder started! You'll get a message every 15 seconds.";
+            blinkInterval = setInterval(function() {
+                alert("Please blink your eyes now!");
+            }, 15000); 
+        }
+       function stopBlinkReminder() {
+            clearInterval(blinkInterval);
+            document.getElementById("blinkMessage").innerHTML = `
+                Blink reminder stopped.<br> <br>
+                <a href="index.html">
+                    <button style="font-size:16px; padding:10px 20px;">Back to Home</button> </a>`;
+        }
+    </script>
+</body>
+</html>

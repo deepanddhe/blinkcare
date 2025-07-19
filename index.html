@@ -1,0 +1,59 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLINKCARE - HOME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 style="text-align:center;">WELCOME TO BLINKCARE</h1>
+   <div style="text-align:center;">
+    <img src="welcome.jpg" class="main-image" alt="welcome image">
+    </div>
+    <div style="text-align:center;"><p>This website is used to protect or prevent eyes by doing  the following exercises etc.</p></div>
+    <div style="text-align:center;"><p>and this website gives some tips and what type of food take also tell some precautionary things to protect eyes while seeing on screen time </p></div>
+    <div style="text-align:center;"><p>this website includes some of the pages like exercise,foods,tips,when our eyes need break.So this are include in this website</p></div>
+    <h2>OPTIONS</h2>
+    <form id="eyecheckbox" class="form-box">
+        <input type="radio" name="eye" value="good"> MY EYES ARE GOOD OR FINE<br>
+        <input type="radio" name="eye" value="bad"> MY EYES ARE FEELING TIRED OR VISION IS LOW<br>
+        <br>
+        <input type="submit" value="Check">
+    </form>
+    <div id="result" style="margin-top: 20px;"></div>
+    <script>
+        document.getElementById("eyecheckbox").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const selectedOption = document.querySelector('input[name="eye"]:checked');
+            if (!selectedOption) {
+                alert("Please select an option!");
+                return;
+            }
+           const selected = selectedOption.value;
+           if (selected === "bad") {
+                window.location.href = "exercise.html";
+            } else {
+                document.getElementById("result").innerHTML = `
+                   <div style="text-align:center;"> 
+                   <h2>Your eyes are healthy!</h2>
+                   </div>
+                    <div style="text-align:center;">
+                    <img src="healthy eye.jpg" class="small-image" width="500px" alt="healthy eye image">
+                    </div>
+                    <div style="text-align:center;">
+                    <p><strong> OKAY but folow the 2 simple tips to maintain your eyes in healhty manner:</strong></p>
+                    </div>
+                    <ul class="tips-list">
+                        <div style="text-align:center;"><li>Every 20 minutes, look at something 20 feet away for 20 seconds to reduce eye strain.</li></div>
+                        <div style="text-align:center;"><li>Include green leafy vegetables, carrots, and fruits rich in Vitamin A and C for better eye health.
+</li></div>
+                    </ul>
+                    <div style="text-align:center;" ><p><strong>Bookmark this site</strong> and visit again if you feel eye strain.</p></div>
+                `;
+            }
+        });
+    </script>
+
+</body>
+</html>

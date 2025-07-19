@@ -1,0 +1,49 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Exercise Selector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Select Your Eye Problem</h2>
+   <form id="eyeProblemForm">
+    <select name="problem" id="problemSelect" style="font-size:16px; padding:5px;">
+        <option value="">-- Choose an option --</option>
+        <option value="strain">Eye strain / Tired Eyes</option>
+        <option value="dry">Dry / Itchy Eyes</option>
+        <option value="blur">Blurred Vision</option>
+    </select><br><br>
+    <button type="submit" style="font-size:16px; padding:5px 10px;">Show Exercise</button>
+</form>
+<div id="videoSection" style="margin-top:20px; text-align:center;"></div>
+<div style="text-align:center; margin-top:20px;">
+    <button onclick="goTobreaks()"style="font-size:16px; padding:10px 20px;"> click Next: Why need Breaks</button>
+</div>
+<script>
+       document.getElementById("eyeProblemForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        const selected = document.getElementById("problemSelect").value;
+        if(selected === ""){
+            alert("Please select your eye problem!");
+            return; }
+          let videoHTML = "";
+          if(selected === "strain"){
+            videoHTML = `<h3>Palming Exercise for Eye Strain</h3>
+            <iframe width="800"  height="400" src="https://www.youtube.com/embed/I_zlmRfJgz8" title="Improve Your Eyesight w/ the Palming Eye Exercise—Naturally!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+        }
+        else if(selected === "dry"){
+            videoHTML = `<h3>Blinking Exercise for Dry Eyes</h3>
+            <iframe width="800" height="400" src="https://www.youtube.com/embed/50A1Wr8XrOU" title="Exercises &amp; Pressure Points for Dry Itchy Eyes - Irritated, red, blurry and tired eyes." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" ></iframe>`;
+           }
+        else if(selected === "blur"){
+            videoHTML = `<h3>Focus Exercise for Blurred Vision</h3>
+            <iframe width="800" height="400" src="https://www.youtube.com/embed/QQ3ki1dCcnw" title="10 Great Exercises to Improve Your Eyesight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+        }
+        document.getElementById("videoSection").innerHTML = videoHTML;
+    });
+     function goTobreaks(){
+        window.location.href = "breakseyes.html";}
+</script>
+</body>

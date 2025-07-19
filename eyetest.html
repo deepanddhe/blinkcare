@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eye Vision Text Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { text-align:center; font-family:Arial; background:#f0f8ff; }
+        #visionText { margin-top:50px; }
+        #progressBar { width:300px; background:#ddd; margin:auto; height:20px; border-radius:10px; }
+        #progress { width:0%; height:20px; background:darkblue; border-radius:10px; }
+        #nextPageBtn { display:none; margin-top:20px; }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>👁️ Eye Vision Text Game</h1>
+
+<p>Try to read the sentence. Click "Next Level" to shrink the text.<br>
+Stop when you can’t read anymore.</p>
+
+<div id="visionText" style="font-size:40px; margin:20px;"></div>
+<div id="progressBar"><div id="progress"></div></div>
+<br>
+<button onclick="nextLevel()" style="padding:10px 20px;" id="nextLevelBtn">Next Level</button>
+<button onclick="giveUp()" style="padding:10px 20px;" id="giveUpBtn">I Give Up!</button>
+
+<p id="scoreText" style="font-size:18px; color:darkblue; margin-top:20px;">Score: 0</p>
+<p id="result" style="font-size:20px; color:#333; margin-top:30px;"></p>
+<a href="blinktimer.html" id="nextPageBtn"> <button style="padding:10px 20px;">Next Page:remainder to blink</button></a>
+
+<script>
+const sentences = [
+    "Eyes are the window to the world. Take care of them.",
+    "Healthy eyes need regular breaks from screen time.",
+    "Blink often to keep your eyes moist and comfortable.",
+    "Eat green leafy vegetables to improve your eye health.",
+    "Follow the 20-20-20 rule to reduce eye strain.",
+    "Protect your eyes from bright light and UV rays daily.",
+    "Avoid staring at your phone too long before sleep.",
+    "Visit an eye doctor regularly for checkups and advice.",
+    "Digital eye strain can lead to blurred vision and headaches.",
+    "Relax your eyes by looking at distant objects often."
+];
+
+let level = 0;
+let size = 40;
+let score = 0;
+document.getElementById("visionText").innerText = sentences[level];
+function nextLevel(){
+    score += 10;
+    document.getElementById("scoreText").innerText = "Score: " + score;
+    level++;
+    if(level < sentences.length){
+        size -= 3;
+        document.getElementById("visionText").style.fontSize = size + "px";
+        document.getElementById("visionText").innerText = sentences[level];
+        document.getElementById("progress").style.width = ((level+1) * 10) + "%";
+    }
+    else {
+        endGame("🎉 Wow! You completed all levels. Great focus!");
+    }
+}
+function giveUp(){
+    endGame("You stopped at Level " + (level+1) + ". Final Score: " + score);
+}
+function endGame(message){
+    document.getElementById("result").innerText = message;
+    document.getElementById("visionText").style.display = "none";
+    document.getElementById("nextLevelBtn").style.display = "none";
+    document.getElementById("giveUpBtn").style.display = "none";
+    document.getElementById("nextPageBtn").style.display = "inline-block";
+}
+</script>
+</body>
+</html>
+
